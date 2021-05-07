@@ -12,7 +12,7 @@
 <script>
 export default {
   name: 'TabControl',
-  prps: {
+  props: {
     titles: {
       type: Array,
       default () {
@@ -24,4 +24,15 @@ export default {
 </script>
 
 <style scoped>
+.tab-control{
+  display: flex;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  font-size: 15px;
+
+}
+.tab-control-item{
+  flex: 1;
+}
 </style>
