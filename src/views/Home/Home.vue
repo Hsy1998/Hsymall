@@ -6,7 +6,8 @@
     <home-swiper :banners="banners"></home-swiper>
     <recommends-view :recommends="recommends"></recommends-view>
     <feature-view></feature-view>
-    <tab-control :titles="['流行', '新款', '精选']"></tab-control>
+    <tab-control class="tab-control"
+                 :titles="['流行', '新款', '精选']"></tab-control>
     <ul>
       <li><br></li>
       <li><br></li>
@@ -119,6 +120,7 @@ import TabControl from "components/content/tabControl/TabControl"
 import HomeSwiper from "./childComps/HomeSwiper"
 import RecommendsView from "./childComps/RecommendsView"
 import FeatureView from "./childComps/FeatureView"
+
 import { getHomeMultidata } from "network/home.js"
 
 
@@ -140,12 +142,16 @@ export default {
     return {
       banners: [],
       recommends: [],
+      goods: {
+        'pop': { page: 0, list: [] },
+        'new': { page: 0, list: [] },
+        'sell': { page: 0, list: [] },
+      }
     }
   },
   // 生命周期函数，在组件创造完成时请求数据
   created () {
     getHomeMultidata().then(res => {
-      console.log(res);
       // 将数据保存到data，函数执行完之后数据还会存在
       this.banners = res.data.banner.list;
       this.recommends = res.data.recommend.list;
@@ -167,5 +173,9 @@ export default {
   left: 0;
   resize: 0;
   top: 0;
+}
+.tab-control {
+  position: sticky;
+  top: 44px;
 }
 </style>
