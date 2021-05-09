@@ -1,38 +1,41 @@
 <template>
   <div class="tab-control">
-    <div class="tab-control-item"
-         v-for="(item,index) in titles"
-         :key="index"
-         :class="{active: index === curentIndex}"
-         @click="tabClick(index)">
-      <span>{{item}}</span>
-
+    <div
+      class="tab-control-item"
+      v-for="(item, index) in titles"
+      :key="index"
+      :class="{ active: index === curentIndex }"
+      @click="tabClick(index)"
+    >
+      <span>{{ item }}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TabControl',
+  name: "TabControl",
   props: {
     titles: {
       type: Array,
-      default () {
-        return []
+      default() {
+        return [];
       }
     }
   },
-  data () {
+  data() {
     return {
       curentIndex: 0
-    }
+    };
   },
   methods: {
-    tabClick (index) {
-      this.curentIndex = index
+    tabClick(index) {
+      (this.curentIndex = index),
+        // 将子组件点击时间传送给父组件
+        this.$emit("tabClick", index);
     }
   }
-}
+};
 </script>
 
 <style scoped>
