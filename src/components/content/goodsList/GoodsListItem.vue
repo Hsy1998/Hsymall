@@ -1,12 +1,14 @@
 <template>
   <div class="goods-list-item">
-    <img :src="goodsItem.show.img" alt="" />
+    <img :src="goodsItem.show.img"
+         alt="" />
     <div>
       <p>{{ goodsItem.title }}</p>
     </div>
     <div class="info">
       <span class="price">{{ goodsItem.price }}</span>
-      <img src="../../../assets/img/common/collect.svg" alt="" />
+      <img src="assets/img/common/collect.svg"
+           alt="" />
       <span>{{ goodsItem.cfav }}</span>
     </div>
   </div>
@@ -20,7 +22,7 @@ export default defineComponent({
   props: {
     goodsItem: {
       type: Object,
-      default() {
+      default () {
         return {};
       }
     }
