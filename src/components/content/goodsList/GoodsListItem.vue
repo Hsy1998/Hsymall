@@ -1,7 +1,9 @@
 <template>
-  <div class="goods-list-item">
+  <div class="goods-list-item"
+       @click="itemClick">
     <img :src="goodsItem.show.img"
-         alt="" />
+         @load="imageLoad" />
+    <!-- vue 自带监听图片加载事件load -->
     <div>
       <p>{{ goodsItem.title }}</p>
     </div>
@@ -25,6 +27,15 @@ export default defineComponent({
       default () {
         return {};
       }
+    }
+  },
+  methods: {
+    imageLoad () {
+      // $bus挂载了Vue实例，通过事件总线将itemImageLoad发射给Home组件
+      this.$bus.$emit('itemImageLoad')
+    },
+    itemClick () {
+      this.$router.push('/detail/' + this.goodsItem.iid)
     }
   }
 });
