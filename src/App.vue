@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <keep-alive>
+    <!-- exclude:将Detail组件从keep-alive状态中去除，让Detail组件可以重新请求iid -->
+    <keep-alive exclude="Detail">
       <router-view />
     </keep-alive>
     <main-tab-bar />
