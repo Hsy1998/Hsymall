@@ -7,8 +7,8 @@
 
 <script>
 import DetailNavBar from "./detailComps/DetailNavBar"
-import { getDetail } from "network/detail"
 import DetailSwiper from "./detailComps/DetailSwiper"
+import { getDetail, Goods } from "network/detail"
 
 
 export default {
@@ -22,7 +22,8 @@ export default {
   data () {
     return {
       iid: null,
-      topImage: []
+      topImage: [],
+      goods: {}
     }
   },
   created () {
@@ -32,7 +33,11 @@ export default {
     // 2.根据iid请求详情数据
     getDetail(this.iid).then(res => {
       console.log(res);
-      this.topImage = res.result.itemInfo.topImages
+      const data = res.result
+      this.topImage = data.itemInfo.topImages
+
+      // 3.获取商品信息
+      this.goods = new Goods(data.itemInfo, data.columns, data.shopInfo.services)
     })
   }
 }
