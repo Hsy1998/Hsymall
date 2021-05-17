@@ -1,5 +1,6 @@
 <template>
-  <div class="base-info">
+  <div class="base-info"
+       v-if="Object.keys(goods).length !== 0">
     <div class="info-title">{{goods.title}}</div>
     <div class="info-price">
       <span class="n-price">{{goods.newPrice}}</span>
@@ -49,6 +50,7 @@ export default {
 }
 .info-price {
   margin-bottom: 20px;
+  position: relative;
 }
 .info-price span {
   margin-left: 5px;
@@ -68,7 +70,8 @@ export default {
   color: #fff;
   padding: 0.2em 0.3em;
   border-radius: 10px;
-  margin-top: -10px;
+  position: absolute;
+  bottom: 7px;
 }
 .info-other {
   display: flex;
