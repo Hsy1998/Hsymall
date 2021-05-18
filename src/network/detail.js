@@ -9,6 +9,12 @@ export function getDetail (iid) {
   })
 }
 
+export function getRecommend () {
+  return request({
+    url: '/recommend'
+  })
+}
+
 // 构造函数，将从服务器返回的的数据进行整合
 export class Goods {
   constructor(itemInfo, columns, services) {

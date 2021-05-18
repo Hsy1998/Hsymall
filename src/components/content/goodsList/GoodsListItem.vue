@@ -1,7 +1,7 @@
 <template>
   <div class="goods-list-item"
        @click="itemClick">
-    <img :src="goodsItem.show.img"
+    <img :src="showImg"
          @load="imageLoad" />
     <!-- vue 自带监听图片加载事件load -->
     <div>
@@ -27,6 +27,11 @@ export default defineComponent({
       default () {
         return {};
       }
+    }
+  },
+  computed: {
+    showImg () {
+      return this.goodsItem.image || this.goodsItem.show.img
     }
   },
   methods: {
